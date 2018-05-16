@@ -6,6 +6,7 @@ android {
         applicationId "com.lineargs.chatservice"
         minSdkVersion 16
         targetSdkVersion 27
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -24,8 +25,16 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 
+    //Multidex for apps with over 64k Methods
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //Firebase
+    implementation 'com.google.firebase:firebase-core:15.0.2'
+
     //Test dependencies
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
+apply plugin: 'com.google.gms.google-services'
