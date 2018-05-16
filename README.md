@@ -7,6 +7,7 @@ number will be required to join.
 ### Main goal of the app is to show the power of Firebase
 
 #### As for now:
+- The app has Initial commit :white_check_mark:
+- The app is still in Hello World :white_check_mark:
 - The app has no name :x:
-- The app has nothing implemented :x:
-- The app has Initial commit :satisfied: :white_check_mark:
+- The app has no Firebase implemented :x:
