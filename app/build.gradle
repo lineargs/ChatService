@@ -20,17 +20,18 @@ android {
 }
 
 dependencies {
-
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
+    //Changed version because of compatibility issues with Firebase AuthUI
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-
     //Multidex for apps with over 64k Methods
     implementation 'com.android.support:multidex:1.0.3'
-
     //Firebase
     implementation 'com.google.firebase:firebase-core:15.0.2'
-
+    //Firebase Authentication
+    implementation 'com.google.firebase:firebase-auth:15.1.0'
+    //Firebase UI Authentication
+    implementation 'com.firebaseui:firebase-ui-auth:3.3.1'
     //Test dependencies
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
