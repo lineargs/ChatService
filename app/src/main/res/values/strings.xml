@@ -11,4 +11,5 @@
     <string name="sign_in_cancelled">Signed in cancelled</string>
     <string name="send_button_label">Send</string>
     <string name="edit_text_hint">Type a message</string>
+    <string name="nav_sign_out">Sign out</string>
 </resources>
