@@ -12,5 +12,6 @@ number will be required to join.
 - The app has Initial commit :white_check_mark:
 - The app is still in Hello World :white_check_mark:
 - The app has no name :x:
-- The app has Firebase AuthUI implemented :white_check_mark:
+- Firebase AuthUI implemented :white_check_mark:
+- Firebase Crashlytics implemented :white_check_mark:
 - No other features implemented as for now :x:
