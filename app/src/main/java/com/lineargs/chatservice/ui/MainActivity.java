@@ -37,6 +37,8 @@ public class MainActivity extends BaseTopActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
 
+    private String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,13 +136,13 @@ public class MainActivity extends BaseTopActivity {
      * @param username The username
      */
     private void onSignedInInitialize(String username) {
-
+        this.username = username;
     }
 
     /**
      * Will be used to breakdown the UI after user signs out
      */
     private void onSignedOutCleanUp() {
-
+        username = null;
     }
 }
