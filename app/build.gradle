@@ -27,9 +27,9 @@ dependencies {
     //Multidex for apps with over 64k Methods
     implementation 'com.android.support:multidex:1.0.3'
     //Firebase
-    implementation 'com.google.firebase:firebase-core:15.0.2'
+    implementation 'com.google.firebase:firebase-core:16.0.0'
     //Firebase Authentication
-    implementation 'com.google.firebase:firebase-auth:15.1.0'
+    implementation 'com.google.firebase:firebase-auth:16.0.1'
     //Firebase UI Authentication
     implementation 'com.firebaseui:firebase-ui-auth:3.3.1'
     //Test dependencies
