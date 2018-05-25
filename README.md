@@ -14,4 +14,5 @@ number will be required to join.
 - The app has no name :x:
 - Firebase AuthUI implemented :white_check_mark:
 - Firebase Crashlytics implemented :white_check_mark:
+- Firebase Database partially implemented :white_check_mark:
 - No other features implemented as for now :x:
