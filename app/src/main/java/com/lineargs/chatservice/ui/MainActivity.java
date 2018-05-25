@@ -5,7 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -15,9 +20,19 @@ import com.lineargs.chatservice.R;
 
 import java.util.Arrays;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends BaseTopActivity {
 
     private static final int RC_SIGN_IN = 222;
+
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+    @BindView(R.id.messageEditText)
+    EditText messageEditText;
+    @BindView(R.id.sendButton)
+    Button sendButton;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -29,8 +44,28 @@ public class MainActivity extends BaseTopActivity {
         // Setups
         setupActionBar();
         setupNavDrawer();
+        //Bind views
+        ButterKnife.bind(this);
         //Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance();
+
+        //Enable sendButton when there is text to send
+        messageEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().length() > 0) {
+                    sendButton.setEnabled(true);
+                } else {
+                    sendButton.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}});
+
         //Firebase AuthUI StateListener
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -57,7 +92,7 @@ public class MainActivity extends BaseTopActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        setDrawerSelectedItem(R.id.nav_camera);
+        setDrawerSelectedItem(R.id.nav_home);
     }
 
     @Override

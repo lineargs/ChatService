@@ -22,9 +22,9 @@ public abstract class BaseDrawerActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.drawer_layout)
+    @BindView(R.id.drawerLayout)
     DrawerLayout drawerLayout;
-    @BindView(R.id.nav_view)
+    @BindView(R.id.navigationView)
     NavigationView navigationView;
 
     /**
@@ -63,13 +63,14 @@ public abstract class BaseDrawerActivity extends BaseActivity {
     private void onNavItemClicked(int itemId) {
         Intent intent = null;
         switch (itemId) {
-            case R.id.nav_camera:
+            case R.id.nav_home:
                 if (this instanceof MainActivity) {
                     break;
                 }
                 intent = new Intent(this, MainActivity.class);
                 break;
             case R.id.nav_sign_out:
+                //Sign out
                 AuthUI.getInstance().signOut(this);
                 break;
         }
@@ -111,7 +112,7 @@ public abstract class BaseDrawerActivity extends BaseActivity {
      * Sets the toolbar navigation icon
      */
     public void setDrawerIndicatorEnabled() {
-        toolbar.setNavigationIcon(R.drawable.icon_baseline_menu_white);
+        toolbar.setNavigationIcon(R.drawable.icon_round_menu_white);
     }
 
     /**
