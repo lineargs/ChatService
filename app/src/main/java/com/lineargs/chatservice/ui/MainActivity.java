@@ -3,6 +3,7 @@ package com.lineargs.chatservice.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.text.Editable;
@@ -10,22 +11,34 @@ import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.lineargs.chatservice.R;
+import com.lineargs.chatservice.adapters.MessageAdapter;
+import com.lineargs.chatservice.model.ChatMessage;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseTopActivity {
 
     private static final int RC_SIGN_IN = 222;
+    public static final String DUMMY = "dummy";
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
@@ -33,9 +46,16 @@ public class MainActivity extends BaseTopActivity {
     EditText messageEditText;
     @BindView(R.id.sendButton)
     Button sendButton;
+    @BindView(R.id.messageListView)
+    ListView messageListView;
+
+    private MessageAdapter messageAdapter;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private ChildEventListener childEventListener;
 
     private String username;
 
@@ -48,8 +68,16 @@ public class MainActivity extends BaseTopActivity {
         setupNavDrawer();
         //Bind views
         ButterKnife.bind(this);
+        //Initialise message ListView and it's adapter
+        List<ChatMessage> chatMessages = new ArrayList<>();
+        messageAdapter = new MessageAdapter(this, R.layout.item_message, chatMessages);
+        messageListView.setAdapter(messageAdapter);
+        username = DUMMY;
         //Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance();
+        //Firebase Database
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference().child("messages");
 
         //Enable sendButton when there is text to send
         messageEditText.addTextChangedListener(new TextWatcher() {
@@ -91,6 +119,12 @@ public class MainActivity extends BaseTopActivity {
         };
     }
 
+    @OnClick (R.id.sendButton)
+    public void sendMessage() {
+        ChatMessage chatMessage = new ChatMessage(messageEditText.getText().toString(), username, null);
+        databaseReference.push().setValue(chatMessage);
+        messageEditText.setText("");
+    }
     @Override
     protected void onStart() {
         super.onStart();
@@ -109,6 +143,8 @@ public class MainActivity extends BaseTopActivity {
         if (authStateListener != null) {
             firebaseAuth.removeAuthStateListener(authStateListener);
         }
+        detachDatabaseReadListener();
+        messageAdapter.clear();
     }
 
     @Override
@@ -137,12 +173,46 @@ public class MainActivity extends BaseTopActivity {
      */
     private void onSignedInInitialize(String username) {
         this.username = username;
+        attachDatabaseReadListener();
     }
 
     /**
      * Will be used to breakdown the UI after user signs out
      */
     private void onSignedOutCleanUp() {
-        username = null;
+        username = DUMMY;
+        messageAdapter.clear();
+        detachDatabaseReadListener();
+    }
+
+    private void attachDatabaseReadListener() {
+        if (childEventListener == null) {
+            childEventListener = new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    ChatMessage chatMessage = dataSnapshot.getValue(ChatMessage.class);
+                    messageAdapter.add(chatMessage);
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {}
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {}
+            };
+            databaseReference.addChildEventListener(childEventListener);
+        }
+    }
+
+    private void detachDatabaseReadListener() {
+        if (childEventListener != null) {
+            databaseReference.removeEventListener(childEventListener);
+        }
     }
 }
