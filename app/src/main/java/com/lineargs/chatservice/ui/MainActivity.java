@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.text.Editable;
@@ -44,8 +45,8 @@ public class MainActivity extends BaseTopActivity {
     ProgressBar progressBar;
     @BindView(R.id.messageEditText)
     EditText messageEditText;
-    @BindView(R.id.sendButton)
-    Button sendButton;
+    @BindView(R.id.sendFab)
+    FloatingActionButton sendFab;
     @BindView(R.id.messageListView)
     ListView messageListView;
 
@@ -79,17 +80,19 @@ public class MainActivity extends BaseTopActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("messages");
 
-        //Enable sendButton when there is text to send
+        //Enable sendFab when there is text to send
         messageEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                sendFab.setEnabled(false);
+            }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().trim().length() > 0) {
-                    sendButton.setEnabled(true);
+                    sendFab.setEnabled(true);
                 } else {
-                    sendButton.setEnabled(false);
+                    sendFab.setEnabled(false);
                 }
             }
 
@@ -119,12 +122,13 @@ public class MainActivity extends BaseTopActivity {
         };
     }
 
-    @OnClick (R.id.sendButton)
+    @OnClick (R.id.sendFab)
     public void sendMessage() {
         ChatMessage chatMessage = new ChatMessage(messageEditText.getText().toString(), username, null);
         databaseReference.push().setValue(chatMessage);
         messageEditText.setText("");
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -167,7 +171,7 @@ public class MainActivity extends BaseTopActivity {
     }
 
     /**
-     * Will be used to initialize the UI afer sign in
+     * Used to initialize the UI afer sign in
      *
      * @param username The username
      */
@@ -177,7 +181,7 @@ public class MainActivity extends BaseTopActivity {
     }
 
     /**
-     * Will be used to breakdown the UI after user signs out
+     * Used to breakdown the UI after user signs out
      */
     private void onSignedOutCleanUp() {
         username = DUMMY;

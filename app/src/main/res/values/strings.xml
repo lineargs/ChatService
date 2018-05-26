@@ -10,8 +10,9 @@
     <string name="sign_in_successful">Signed in successful</string>
     <string name="sign_in_cancelled">Signed in cancelled</string>
     <string name="send_button_label">Send</string>
-    <string name="edit_text_hint">Type a message</string>
+    <string name="edit_text_hint">Say something...</string>
     <string name="nav_sign_out">Sign out</string>
     <string name="nav_home">Home</string>
     <string name="nav_communicate">Communicate</string>
+    <string name="image_button_content_description">Pick an image to send</string>
 </resources>
