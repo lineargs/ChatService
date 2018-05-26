@@ -5,12 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -79,12 +75,15 @@ public class MainActivity extends BaseTopActivity {
         //Firebase Database
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("messages");
+        /* Disabling FAB in onCreate() to avoid sending empty message, either this
+         * or an if...else statement in sendFab onClick()
+         */
+        sendFab.setEnabled(false);
 
         //Enable sendFab when there is text to send
         messageEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                sendFab.setEnabled(false);
             }
 
             @Override
@@ -97,7 +96,9 @@ public class MainActivity extends BaseTopActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {}});
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
         //Firebase AuthUI StateListener
         authStateListener = new FirebaseAuth.AuthStateListener() {
@@ -122,7 +123,10 @@ public class MainActivity extends BaseTopActivity {
         };
     }
 
-    @OnClick (R.id.sendFab)
+    /**
+     * FloatingActionButton onClick()
+     */
+    @OnClick(R.id.sendFab)
     public void sendMessage() {
         ChatMessage chatMessage = new ChatMessage(messageEditText.getText().toString(), username, null);
         databaseReference.push().setValue(chatMessage);
@@ -199,16 +203,20 @@ public class MainActivity extends BaseTopActivity {
                 }
 
                 @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                }
 
                 @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {}
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                }
 
                 @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                }
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {}
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
             };
             databaseReference.addChildEventListener(childEventListener);
         }
