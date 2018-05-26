@@ -84,7 +84,7 @@ public class MainActivity extends BaseTopActivity {
         //Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance();
         //Firebase Database
-         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("messages");
         //Firebase Cloud Storage
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
