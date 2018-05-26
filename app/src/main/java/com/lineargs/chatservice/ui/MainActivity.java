@@ -68,6 +68,8 @@ public class MainActivity extends BaseTopActivity {
         //Initialise message ListView and it's adapter
         List<ChatMessage> chatMessages = new ArrayList<>();
         messageAdapter = new MessageAdapter(this, R.layout.item_message, chatMessages);
+        //For simplified purposes
+        //TODO RecyclerView
         messageListView.setAdapter(messageAdapter);
         username = DUMMY;
         //Firebase Auth
