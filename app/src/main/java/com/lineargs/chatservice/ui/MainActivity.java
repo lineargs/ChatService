@@ -34,9 +34,8 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseTopActivity {
 
-    private static final int RC_SIGN_IN = 222;
     public static final String DUMMY = "dummy";
-
+    private static final int RC_SIGN_IN = 222;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
     @BindView(R.id.messageEditText)
