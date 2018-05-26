@@ -14,6 +14,7 @@ number will be required to join.
 - Firebase Crashlytics implemented :white_check_mark:
 - Firebase Database partially implemented :white_check_mark:
 - Firebase Cloud Storage partially implemented :white_check_mark:
+- The app is able to send and receive messages, both text and picture messages under only one demo room :white_check_mark:
 - No other features implemented as for now :x:
 
 #### Screenshots:
