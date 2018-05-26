@@ -27,6 +27,8 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     //Multidex for apps with over 64k Methods
     implementation 'com.android.support:multidex:1.0.3'
+    //Image Displaying
+    implementation 'com.github.bumptech.glide:glide:4.4.0'
     //Firebase
     implementation 'com.google.firebase:firebase-core:16.0.0'
     //Firebase Authentication

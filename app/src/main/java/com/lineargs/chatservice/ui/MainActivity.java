@@ -198,13 +198,17 @@ public class MainActivity extends BaseTopActivity {
             }
         } else if (requestCode == RC_PICK_IMAGE && resultCode == RESULT_OK) {
             Uri uri = data.getData();
-            StorageReference photoReference = storageReference.child(uri.getLastPathSegment());
+            final StorageReference photoReference = storageReference.child(uri.getLastPathSegment());
             photoReference.putFile(uri).addOnSuccessListener(this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Uri downloadUrl = taskSnapshot.getUploadSessionUri();
-                    ChatMessage chatMessage = new ChatMessage(null, username, downloadUrl.toString());
-                    databaseReference.push().setValue(chatMessage);
+                    photoReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            ChatMessage chatMessage = new ChatMessage(null, username, uri.toString());
+                            databaseReference.push().setValue(chatMessage);
+                        }
+                    });
                 }
             });
         }
