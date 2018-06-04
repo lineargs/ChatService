@@ -24,8 +24,10 @@
             app:toolbarId="@+id/toolbar">
 
             <ImageView
+                android:id="@+id/profile_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:src="@drawable/icon_round_person_black"
                 android:adjustViewBounds="true"/>
 
             <android.support.v7.widget.Toolbar

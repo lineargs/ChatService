@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +22,8 @@ public class ProfileActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.profile_email)
     TextView profileEmail;
+    @BindView(R.id.profile_image)
+    ImageView profileImage;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
@@ -33,7 +36,9 @@ public class ProfileActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
         setupActionBar();
+        loadProfileImage();
         profileEmail.setText(firebaseUser.getEmail());
+
     }
 
     private void setupActionBar() {
@@ -46,6 +51,11 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
+    private void loadProfileImage() {
+        //TODO Load image
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_profile, menu);
@@ -56,7 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_edit:
-                //TODO
+                //TODO Be able to edit the name and profile image
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
