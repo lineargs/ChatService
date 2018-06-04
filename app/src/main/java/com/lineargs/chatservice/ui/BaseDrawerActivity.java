@@ -69,6 +69,9 @@ public abstract class BaseDrawerActivity extends BaseActivity {
                 }
                 intent = new Intent(this, MainActivity.class);
                 break;
+            case R.id.nav_profile:
+                intent = new Intent(this, ProfileActivity.class);
+                break;
             case R.id.nav_sign_out:
                 //Sign out
                 AuthUI.getInstance().signOut(this);

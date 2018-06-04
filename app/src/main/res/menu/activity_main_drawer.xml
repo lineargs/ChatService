@@ -3,20 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/navigation_items"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/icon_round_home_black"
             android:title="@string/nav_home" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/icon_round_person_black"
+            android:title="@string/nav_profile" />
     </group>
 
-    <item android:title="@string/nav_communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_sign_out"
-                android:icon="@drawable/icon_round_close_black"
-                android:title="@string/nav_sign_out" />
-        </menu>
-    </item>
+    <group android:id="@+id/navigation_actions"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_sign_out"
+            android:icon="@drawable/icon_round_close_black"
+            android:title="@string/nav_sign_out" />
+    </group>
 
 </menu>
