@@ -25,7 +25,6 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.profile_image)
     ImageView profileImage;
 
-    private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
 
     @Override
@@ -33,12 +32,15 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
-        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-        setupActionBar();
-        loadProfileImage();
-        profileEmail.setText(firebaseUser.getEmail());
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        setupActionBar();
+        loadProfileInfo();
     }
 
     private void setupActionBar() {
@@ -51,7 +53,8 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    private void loadProfileImage() {
+    private void loadProfileInfo() {
+        profileEmail.setText(firebaseUser.getEmail());
         //TODO Load image
     }
 
