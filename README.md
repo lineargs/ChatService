@@ -16,6 +16,7 @@ number will be required to join.
 - Firebase Cloud Storage partially implemented :white_check_mark:
 - The app is able to send and receive messages, both text and picture messages under only one demo room :white_check_mark:
 - Added profile with only read options, edit and profile image to follow :white_check_mark:
+- Non functional Edit Profile Actvity :x:
 - No other features implemented :x:
 
 #### Screenshots:
