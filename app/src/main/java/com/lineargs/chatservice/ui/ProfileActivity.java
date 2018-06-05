@@ -34,12 +34,12 @@ public class ProfileActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        setupActionBar();
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        setupActionBar();
+    protected void onResume() {
+        super.onResume();
         loadProfileInfo();
     }
 
