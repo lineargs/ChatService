@@ -21,8 +21,13 @@
         </activity>
         <activity
             android:name=".ui.ProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".ui.MainActivity"/>
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.ProfileEditActivity"
+            android:label="@string/title_activity_profile_edit"
+            android:parentActivityName=".ui.ProfileActivity"
+            android:theme="@style/AppTheme.EditProfile" />
     </application>
 
 </manifest>

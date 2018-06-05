@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.ProfileEditActivity"
+    tools:showIn="@layout/activity_profile_edit">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="?attr/colorPrimary"
+        android:clickable="true"
+        android:focusable="true">
+
+    <ImageView
+        android:id="@+id/editProfileImage"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:src="@drawable/icon_round_add_a_photo_black"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/editProfileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="@string/say_your_name"
+        android:drawablePadding="@dimen/text_margin"
+        android:layout_margin="@dimen/text_margin"
+        android:drawableLeft="@drawable/icon_round_person_black"
+        android:drawableStart="@drawable/icon_round_person_black"/>
+
+</LinearLayout>
