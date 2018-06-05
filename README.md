@@ -4,7 +4,7 @@ Simple Android chat app where the user will be able to create a personal "space"
 so they can have a private conversation. The users will be able to create and join as many "spaces" as they want and no phone
 number will be required to join.
 
-<img src="app/src/main/ic_launcher-web.png" width="200" height="200"/>
+<img src="screenshots/web_hi_res_512.png" width="200" height="200"/>
 
 ### Main goal of the app is to show the power of Firebase
 
