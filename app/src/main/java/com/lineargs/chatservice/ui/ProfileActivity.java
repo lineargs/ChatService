@@ -48,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void setupActionBar() {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
+        //bug: Title not updating even after moving in onResume() after calling finish in Save
         setTitle(firebaseUser.getDisplayName());
         if (actionBar != null) {
             actionBar.setHomeButtonEnabled(true);

@@ -65,6 +65,7 @@ public class MainActivity extends BaseTopActivity {
 
     private String username;
 
+    //TODO Change the activity lifecycle to the firebase database setup
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

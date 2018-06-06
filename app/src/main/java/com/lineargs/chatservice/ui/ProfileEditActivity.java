@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,8 +44,8 @@ public class ProfileEditActivity extends AppCompatActivity {
     ImageView editProfileImage;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
-    private FirebaseAuth firebaseAuth;
     private StorageReference storageReference;
+    private FirebaseUser firebaseUser;
     private Uri photoUri;
 
     @Override
@@ -55,10 +56,12 @@ public class ProfileEditActivity extends AppCompatActivity {
         setupActionBar();
         photoUri = Uri.parse("");
         //Firebase Auth
-        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
         //Firebase Cloud Storage
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference().child("profile_pictures");
+        editProfileName.setText(firebaseUser.getDisplayName());
     }
 
     @OnClick(R.id.editProfileImage)
@@ -118,10 +121,10 @@ public class ProfileEditActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_save:
                 //TODO Update profile (Display name and Image)
-                if (!Uri.EMPTY.equals(photoUri)) {
-                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                if (!Uri.EMPTY.equals(photoUri) && !TextUtils.isEmpty(editProfileName.getText().toString())) {
                     UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder()
                             .setPhotoUri(photoUri)
+                            .setDisplayName(editProfileName.getText().toString())
                             .build();
                     if (firebaseUser != null) {
                         firebaseUser.updateProfile(userProfileChangeRequest)
