@@ -8,9 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +34,14 @@ public class ProfileEditActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.editProfileName)
     EditText editProfileName;
+    @BindView(R.id.scrim)
+    View scrim;
+    @BindView(R.id.profileImage)
+    ImageView profileImage;
+    @BindView(R.id.editProfileImage)
+    ImageView editProfileImage;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     private FirebaseAuth firebaseAuth;
     private StorageReference storageReference;
@@ -64,6 +76,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_PICK_IMAGE) {
             if (resultCode == RESULT_OK) {
+                showLoading();
                 Uri uri = data.getData();
                 final StorageReference photoReference = storageReference.child(uri.getLastPathSegment());
                 photoReference.putFile(uri).addOnSuccessListener(this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -73,6 +86,12 @@ public class ProfileEditActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
                                 photoUri = uri;
+                                showEditImage();
+                                Toast.makeText(ProfileEditActivity.this, R.string.picture_uploaded_toast, Toast.LENGTH_SHORT).show();
+                                Glide.with(profileImage.getContext())
+                                        .load(uri)
+                                        .into(profileImage);
+                                scrim.setVisibility(View.VISIBLE);
                             }
                         });
                     }
@@ -122,5 +141,15 @@ public class ProfileEditActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    private void showLoading() {
+        progressBar.setVisibility(View.VISIBLE);
+        editProfileImage.setVisibility(View.GONE);
+    }
+
+    private void showEditImage() {
+        progressBar.setVisibility(View.GONE);
+        editProfileImage.setVisibility(View.VISIBLE);
     }
 }
