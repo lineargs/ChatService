@@ -17,7 +17,7 @@ number will be required to join.
 - The app is able to send and receive messages, both text and picture messages under only one demo room :white_check_mark:
 - Added profile with only read options, edit and profile image to follow :white_check_mark:
 - Partly functional Edit Profile Actvity :white_check_mark:
-- The user can update their profile picture from the app :white_check_mark:
+- The user can update their profile picture and name only and only is updating both of them at the same time :white_check_mark:
 - No other features implemented :x:
 
 #### Screenshots:
