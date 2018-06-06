@@ -112,10 +112,10 @@ public class ProfileEditActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Toast.makeText(ProfileEditActivity.this, R.string.profile_updated_toast, Toast.LENGTH_SHORT).show();
+                                        finish();
                                     }
                                 });
                     }
-                    finish();
                 }
                 return true;
             default:
