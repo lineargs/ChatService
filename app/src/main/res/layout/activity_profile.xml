@@ -8,14 +8,14 @@
     tools:context=".ui.ProfileActivity">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
+            android:id="@+id/toolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
@@ -24,12 +24,12 @@
             app:toolbarId="@+id/toolbar">
 
             <ImageView
-                android:id="@+id/profile_image"
+                android:id="@+id/profileImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/icon_round_person_black"
-                android:adjustViewBounds="true"
                 tools:ignore="ContentDescription" />
 
             <android.support.v7.widget.Toolbar

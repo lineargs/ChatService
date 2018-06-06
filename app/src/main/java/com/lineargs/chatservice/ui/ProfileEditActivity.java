@@ -30,6 +30,7 @@ import butterknife.OnClick;
 
 public class ProfileEditActivity extends AppCompatActivity {
 
+    private static final int RC_PICK_IMAGE = 333;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.editProfileName)
@@ -42,11 +43,8 @@ public class ProfileEditActivity extends AppCompatActivity {
     ImageView editProfileImage;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
-
     private FirebaseAuth firebaseAuth;
     private StorageReference storageReference;
-    private static final int RC_PICK_IMAGE = 333;
-
     private Uri photoUri;
 
     @Override

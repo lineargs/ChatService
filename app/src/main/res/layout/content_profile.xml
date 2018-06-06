@@ -9,12 +9,12 @@
     tools:showIn="@layout/activity_profile">
 
     <TextView
-        android:id="@+id/profile_email"
+        android:id="@+id/profileEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/icon_round_email_black"
+        android:layout_margin="@dimen/text_margin"
         android:drawableLeft="@drawable/icon_round_email_black"
         android:drawablePadding="@dimen/text_margin"
-        android:layout_margin="@dimen/text_margin"/>
+        android:drawableStart="@drawable/icon_round_email_black" />
 
 </android.support.v4.widget.NestedScrollView>

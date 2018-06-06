@@ -20,8 +20,8 @@
             android:id="@+id/profileImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
             tools:ignore="ContentDescription" />
 
         <View
@@ -29,34 +29,34 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#99323232"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
-    <ImageView
-        android:id="@+id/editProfileImage"
-        android:layout_width="@dimen/edit_profile_image"
-        android:layout_height="@dimen/edit_profile_image"
-        android:src="@drawable/icon_round_add_a_photo_black"
-        android:layout_centerInParent="true"
-        android:adjustViewBounds="true"
-        tools:ignore="ContentDescription" />
+        <ImageView
+            android:id="@+id/editProfileImage"
+            android:layout_width="@dimen/edit_profile_image"
+            android:layout_height="@dimen/edit_profile_image"
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/icon_round_add_a_photo_black"
+            tools:ignore="ContentDescription" />
 
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="@dimen/edit_profile_image"
             android:layout_height="@dimen/edit_profile_image"
             android:layout_centerInParent="true"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </RelativeLayout>
 
     <EditText
         android:id="@+id/editProfileName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="@string/say_your_name"
-        android:drawablePadding="@dimen/text_margin"
         android:layout_margin="@dimen/text_margin"
         android:drawableLeft="@drawable/icon_round_person_black"
-        android:drawableStart="@drawable/icon_round_person_black"/>
+        android:drawablePadding="@dimen/text_margin"
+        android:drawableStart="@drawable/icon_round_person_black"
+        android:hint="@string/say_your_name"
+        android:inputType="textEmailAddress" />
 
 </LinearLayout>

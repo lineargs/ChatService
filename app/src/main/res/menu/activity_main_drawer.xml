@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:id="@+id/navigation_items"
+    <group
+        android:id="@+id/navigation_items"
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
@@ -15,7 +16,8 @@
             android:title="@string/nav_profile" />
     </group>
 
-    <group android:id="@+id/navigation_actions"
+    <group
+        android:id="@+id/navigation_actions"
         android:checkableBehavior="none">
         <item
             android:id="@+id/nav_sign_out"

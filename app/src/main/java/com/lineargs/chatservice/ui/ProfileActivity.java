@@ -22,9 +22,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.profile_email)
+    @BindView(R.id.profileEmail)
     TextView profileEmail;
-    @BindView(R.id.profile_image)
+    @BindView(R.id.profileImage)
     ImageView profileImage;
 
     private FirebaseUser firebaseUser;
