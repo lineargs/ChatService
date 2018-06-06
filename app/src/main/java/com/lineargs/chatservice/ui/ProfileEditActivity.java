@@ -1,15 +1,23 @@
 package com.lineargs.chatservice.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.lineargs.chatservice.R;
 
 import butterknife.BindView;
@@ -20,9 +28,14 @@ public class ProfileEditActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.editProfileName)
+    EditText editProfileName;
 
+    private FirebaseAuth firebaseAuth;
     private StorageReference storageReference;
     private static final int RC_PICK_IMAGE = 333;
+
+    private Uri photoUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +43,9 @@ public class ProfileEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_edit);
         ButterKnife.bind(this);
         setupActionBar();
+        photoUri = Uri.parse("");
+        //Firebase Auth
+        firebaseAuth = FirebaseAuth.getInstance();
         //Firebase Cloud Storage
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference().child("profile_pictures");
@@ -41,6 +57,28 @@ public class ProfileEditActivity extends AppCompatActivity {
         intent.setType("image/jpeg");
         intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
         startActivityForResult(Intent.createChooser(intent, "Complete action using"), RC_PICK_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_PICK_IMAGE) {
+            if (resultCode == RESULT_OK) {
+                Uri uri = data.getData();
+                final StorageReference photoReference = storageReference.child(uri.getLastPathSegment());
+                photoReference.putFile(uri).addOnSuccessListener(this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        photoReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                photoUri = uri;
+                            }
+                        });
+                    }
+                });
+            }
+        }
     }
 
     private void setupActionBar() {
@@ -63,6 +101,22 @@ public class ProfileEditActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_save:
                 //TODO Update profile (Display name and Image)
+                if (!Uri.EMPTY.equals(photoUri)) {
+                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                    UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder()
+                            .setPhotoUri(photoUri)
+                            .build();
+                    if (firebaseUser != null) {
+                        firebaseUser.updateProfile(userProfileChangeRequest)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(ProfileEditActivity.this, R.string.profile_updated_toast, Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    }
+                    finish();
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
