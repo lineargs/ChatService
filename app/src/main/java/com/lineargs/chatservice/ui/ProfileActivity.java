@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.lineargs.chatservice.R;
@@ -56,6 +57,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void loadProfileInfo() {
         profileEmail.setText(firebaseUser.getEmail());
+        Glide.with(profileImage.getContext())
+                .load(firebaseUser.getPhotoUrl())
+                .into(profileImage);
         //TODO Load image
     }
 
