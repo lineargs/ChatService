@@ -10,17 +10,18 @@ number will be required to join.
 
 #### As for now:
 - The app has no name :x:
-- Firebase AuthUI implemented :white_check_mark:
+- Firebase AuthUI and Crashlytics implemented :white_check_mark:
 - Firebase Crashlytics implemented :white_check_mark:
 - Firebase Database partially implemented :white_check_mark:
 - Firebase Cloud Storage partially implemented :white_check_mark:
 - The app is able to send and receive messages, both text and picture messages under only one demo room :white_check_mark:
 - Added profile with only read options, edit and profile image to follow :white_check_mark:
-- Non functional Edit Profile Actvity :x:
+- Partly functional Edit Profile Actvity :white_check_mark:
+- The user can update their profile picture from the app :white_check_mark:
 - No other features implemented :x:
 
 #### Screenshots:
-<img src="screenshots/first_messages.png" width="280"/> <img src="screenshots/first_photo_messages.png" width="280"/> <img src="screenshots/first_profile_layout.png" width="280"/>
+<img src="screenshots/first_photo_messages.png" width="280"/> <img src="screenshots/profile_layout.png" width="280"/> <img src="screenshots/edit_profile_layout.png" width="280"/>
 
 The app uses Glide for displaying images
 
