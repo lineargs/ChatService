@@ -21,7 +21,7 @@ number will be required to join.
 - No other features implemented :x:
 
 #### Screenshots:
-<img src="screenshots/first_photo_messages.png" width="280"/> <img src="screenshots/profile_layout.png" width="280"/> <img src="screenshots/edit_profile_layout.png" width="280"/>
+<img src="screenshots/first_photo_messages.png" width="280"/> <img src="screenshots/profile_layout.png" width="280"/> <img src="screenshots/edit_profile_updated_layout.png" width="280"/>
 
 The app uses Glide for displaying images
 
