@@ -12,6 +12,10 @@ import butterknife.OnClick;
 
 public class HomeActivity extends BaseTopActivity {
 
+    //TODO Initialize the UI afer sign in
+    //TODO Breakdown the UI after user signs out
+    //TODO Firebase AuthUI StateListener
+
     public static final String MESSAGES = "messages";
 
     @Override
