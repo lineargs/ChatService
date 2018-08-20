@@ -7,6 +7,16 @@ buildscript {
     def versionPatch = 0
 
     ext.versions = [
+            'minSdk' : 16,
+            'compileSdk' : 27,
+            'supportLibrary' : '27.1.0',
+            'constraintLayout' : '1.1.2',
+            'glide' : '4.7.1',
+            'firebaseCore' : '16.0.1',
+            'firebaseAuth' : '16.0.3',
+            'firebaseAuthUI' : '3.3.1',
+            'firebaseCrashlytics' : '2.9.4',
+            'butterKnife' : '8.8.1',
             'versionCode': versionMajor * 10000 + versionMinor * 100 + versionPatch,
             'versionName': "${versionMajor}.${versionMinor}.${versionPatch}"
     ]
