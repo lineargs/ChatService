@@ -22,4 +22,5 @@
     <string name="action_save">Save</string>
     <string name="profile_updated_toast">Profile updated</string>
     <string name="picture_uploaded_toast">Picture uploaded</string>
+    <string name="home_activity_title">Home</string>
 </resources>

@@ -82,11 +82,15 @@ public class MainActivity extends BaseTopActivity {
         //TODO RecyclerView
         messageListView.setAdapter(messageAdapter);
         username = DUMMY;
+
         //Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance();
         //Firebase Database
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("messages");
+        if (getIntent().hasExtra(HomeActivity.MESSAGES)) {
+            databaseReference = firebaseDatabase.getReference().child(getIntent().getStringExtra(HomeActivity.MESSAGES));
+        }
+
         //Firebase Cloud Storage
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference().child("photo_messages");
@@ -157,12 +161,6 @@ public class MainActivity extends BaseTopActivity {
         intent.setType("image/jpeg");
         intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
         startActivityForResult(Intent.createChooser(intent, "Complete action using"), RC_PICK_IMAGE);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        setDrawerSelectedItem(R.id.nav_home);
     }
 
     @Override

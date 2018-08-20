@@ -64,10 +64,10 @@ public abstract class BaseDrawerActivity extends BaseActivity {
         Intent intent = null;
         switch (itemId) {
             case R.id.nav_home:
-                if (this instanceof MainActivity) {
+                if (this instanceof HomeActivity) {
                     break;
                 }
-                intent = new Intent(this, MainActivity.class);
+                intent = new Intent(this, HomeActivity.class);
                 break;
             case R.id.nav_profile:
                 intent = new Intent(this, ProfileActivity.class);

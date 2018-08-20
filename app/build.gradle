@@ -44,6 +44,7 @@ dependencies {
     implementation "com.crashlytics.sdk.android:crashlytics:${versions.firebaseCrashlytics}"
     //ButterKnife
     implementation "com.jakewharton:butterknife:${versions.butterKnife}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     annotationProcessor "com.jakewharton:butterknife-compiler:${versions.butterKnife}"
     //Test dependencies
     testImplementation 'junit:junit:4.12'
