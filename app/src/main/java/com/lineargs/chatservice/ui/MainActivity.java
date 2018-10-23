@@ -40,6 +40,8 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseTopActivity {
 
+    //TODO Breakdown all this into dif activities
+
     public static final String DUMMY = "dummy";
     private static final int RC_SIGN_IN = 222;
     private static final int RC_PICK_IMAGE = 333;

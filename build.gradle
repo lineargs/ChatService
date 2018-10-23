@@ -9,13 +9,15 @@ buildscript {
     ext.versions = [
             'minSdk' : 16,
             'compileSdk' : 27,
-            'supportLibrary' : '27.1.0',
-            'constraintLayout' : '1.1.2',
+            'supportLibrary' : '27.1.1',
+            'constraintLayout' : '1.1.3',
             'glide' : '4.7.1',
-            'firebaseCore' : '16.0.1',
-            'firebaseAuth' : '16.0.3',
+            'firebaseCore' : '16.0.4',
+            'firebaseDb' : '16.0.3',
+            'firebaseStorage' : '16.0.3',
+            'firebaseAuth' : '16.0.5',
             'firebaseAuthUI' : '3.3.1',
-            'firebaseCrashlytics' : '2.9.4',
+            'firebaseCrashlytics' : '2.9.5',
             'butterKnife' : '8.8.1',
             'versionCode': versionMajor * 10000 + versionMinor * 100 + versionPatch,
             'versionName': "${versionMajor}.${versionMinor}.${versionPatch} beta"
@@ -28,7 +30,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath 'com.android.tools.build:gradle:3.2.1'
 
         classpath 'com.google.gms:google-services:3.2.1'
 
@@ -44,8 +46,4 @@ allprojects {
             url 'https://maven.google.com/'
         }
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
