@@ -21,6 +21,7 @@ android {
 }
 
 dependencies {
+    //TODO Update support library version to fix compatibility issues
     //Changed version because of compatibility issues with Firebase AuthUI
     implementation "com.android.support:appcompat-v7:${versions.supportLibrary}"
     implementation "com.android.support:design:${versions.supportLibrary}"
