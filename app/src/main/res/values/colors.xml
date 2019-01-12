@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF9800</color>
-    <color name="colorPrimaryDark">#F57C00</color>
-    <color name="colorAccent">#009688</color>
 
-    <!-- Common colours-->
+    <!-- Theme colors -->
+    <color name="colorPrimaryLight">#D1C4E9</color>
+    <color name="colorPrimary">#673AB7</color>
+    <color name="colorPrimaryDark">#512DA8</color>
+    <color name="colorAccent">#00BCD4</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+
+    <!-- Common colours -->
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
 </resources>
