@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/activity_main_card_margin"
@@ -11,17 +12,39 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/text_view_messages"
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="@dimen/activity_main_card_margin"
-            android:text="MESSAGES"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            android:textColor="@color/colorBlack" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/rbh_logo"
+            tools:ignore="ContentDescription" />
+
+        <Button
+            android:id="@+id/button_chat"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/colorIndigo"
+            android:text="@string/need_help"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/colorWhite" />
+
+        <Button
+            android:id="@+id/button_about_us"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorOrange"
+            android:text="@string/menu"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/colorWhite"
+            android:layout_weight="1" />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

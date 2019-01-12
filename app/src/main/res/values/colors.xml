@@ -12,4 +12,6 @@
     <!-- Common colours -->
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorIndigo">#3F51B5</color>
+    <color name="colorOrange">#FF9800</color>
 </resources>

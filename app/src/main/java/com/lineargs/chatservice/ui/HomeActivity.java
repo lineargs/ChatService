@@ -42,7 +42,7 @@ public class HomeActivity extends BaseTopActivity {
         setDrawerSelectedItem(R.id.nav_home);
     }
 
-    @OnClick(R.id.text_view_messages)
+    @OnClick(R.id.button_chat)
     public void onClickMessages() {
         Intent intent = new Intent(HomeActivity.this, MainActivity.class);
         intent.putExtra(MESSAGES, MESSAGES);
