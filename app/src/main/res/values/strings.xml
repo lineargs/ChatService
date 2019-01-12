@@ -18,7 +18,7 @@
     <string name="nav_profile">Profile</string>
     <string name="action_edit">Edit</string>
     <string name="title_activity_profile_edit">Edit Profile</string>
-    <string name="say_your_name">Say your name...</string>
+    <string name="say_your_name">Say your name…</string>
     <string name="action_save">Save</string>
     <string name="profile_updated_toast">Profile updated</string>
     <string name="picture_uploaded_toast">Picture uploaded</string>
